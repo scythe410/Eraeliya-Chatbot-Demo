@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Chatbot.css';
 import { sendMessageToGemini } from '../services/gemini';
 
+import botIcon from '../assets/bot.svg';
+
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
@@ -71,7 +73,7 @@ const Chatbot = () => {
         <div className={`chatbot-container ${isOpen ? 'open' : ''}`}>
             {!isOpen && (
                 <button className="chatbot-toggle" onClick={toggleChat}>
-                    <span role="img" aria-label="chat">💬</span>
+                    <img src={botIcon} alt="Chat with us" />
                 </button>
             )}
             {isOpen && (
@@ -97,7 +99,7 @@ const Chatbot = () => {
                         )}
                         <div ref={messagesEndRef} />
                     </div>
-                    <form className="chatbot-input" onSubmit={handleSubmit}>
+                    <form className="chatbot-input-form" onSubmit={handleSubmit}>
                         <input
                             type="text"
                             placeholder="Type your message..."

@@ -88,7 +88,7 @@ const LandingPage = () => (
         </div>
       </div>
       <div className="text-center" style={{ marginTop: '40px', paddingTop: '20px', borderTop: '1px solid #222' }}>
-        <p>&copy; 2025 Eraeliya Villas & Gardens. Demo by Antigravity.</p>
+        <p>&copy; Demo by R.</p>
       </div>
     </footer>
 

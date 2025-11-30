@@ -14,7 +14,7 @@
   padding: 15px 30px;
   font-size: 16px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s, background-color 0.2s;
 }
 
@@ -28,7 +28,7 @@
   height: 500px;
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -36,8 +36,15 @@
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .chatbot-header {
@@ -101,32 +108,46 @@
   display: flex;
   gap: 10px;
   background-color: white;
+  align-items: center;
+  /* Ensure vertical alignment */
 }
 
 .chatbot-input-form input {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
+  padding: 12px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
   outline: none;
   font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #f8f8f8;
 }
 
 .chatbot-input-form input:focus {
   border-color: #1a1a1a;
+  background-color: white;
+  box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.1);
 }
 
 .chatbot-input-form button {
   background-color: #1a1a1a;
   color: white;
   border: none;
-  border-radius: 20px;
-  padding: 8px 20px;
+  border-radius: 25px;
+  padding: 12px 20px;
   cursor: pointer;
   font-size: 14px;
-  transition: background-color 0.2s;
+  font-weight: 500;
+  transition: background-color 0.2s, transform 0.1s;
+  white-space: nowrap;
+  /* Prevent text wrapping */
 }
 
 .chatbot-input-form button:hover {
   background-color: #333;
+  transform: translateY(-1px);
+}
+
+.chatbot-input-form button:active {
+  transform: translateY(0);
 }

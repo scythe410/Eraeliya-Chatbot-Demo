@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { knowledgeBase } from '../data/knowledgeBase';
-import Fuse from 'fuse.js';
 import './Chatbot.css';
+import { sendMessageToGemini } from '../services/gemini';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
-        { text: "Hello! Welcome to Eraeliya Villas & Gardens. How can I assist you today?", sender: 'bot' }
+        { text: "Hi! I'm the Eraeliya virtual assistant. How can I help you today?", sender: 'bot' }
     ]);
     const [inputValue, setInputValue] = useState("");
+    const [isTyping, setIsTyping] = useState(false);
     const messagesEndRef = useRef(null);
 
     const toggleChat = () => {
@@ -21,111 +21,59 @@ const Chatbot = () => {
 
     useEffect(() => {
         scrollToBottom();
-    }, [messages]);
+    }, [messages, isOpen, isTyping]);
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
     };
 
-    const processInput = (input) => {
-        const lowerInput = input.toLowerCase();
-        let response = knowledgeBase.default;
-
-        // 1. Check for specific villa matches first
-        // Clean input to remove common conversational prefixes for better entity matching
-        const cleanInput = lowerInput
-            .replace(/tell me about/g, '')
-            .replace(/what is/g, '')
-            .replace(/show me/g, '')
-            .replace(/details of/g, '')
-            .replace(/info on/g, '')
-            .replace(/can you/g, '')
-            .replace(/i want to know about/g, '')
-            .trim();
-
-        const villaOptions = {
-            includeScore: true,
-            threshold: 0.4, // Slightly relaxed threshold since we cleaned input
-            keys: ['name']
-        };
-        const villaFuse = new Fuse(knowledgeBase.villas, villaOptions);
-        const villaResult = villaFuse.search(cleanInput);
-
-        if (villaResult.length > 0) {
-            const villa = villaResult[0].item;
-            return `**${villa.name}**\n\n${villa.description}`;
-        }
-
-        // 2. General Intent Matching
-        const intents = [
-            { id: 'greeting', keywords: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'] },
-            { id: 'menu', keywords: ['menu', 'food list', 'drink list', 'eat', 'hungry'] },
-            { id: 'offers', keywords: ['offer', 'deal', 'discount', 'promotion', 'price', 'cost'] },
-            { id: 'villas', keywords: ['villa', 'room', 'stay', 'accommodation', 'suite', 'sleep', 'bed'] },
-            { id: 'dining', keywords: ['food', 'dining', 'restaurant', 'breakfast', 'lunch', 'dinner'] },
-            { id: 'experiences', keywords: ['experience', 'activity', 'do', 'yoga', 'surf', 'spa', 'massage', 'excursion', 'tour'] },
-            { id: 'contact', keywords: ['contact', 'phone', 'email', 'address', 'location', 'where'] }
-        ];
-
-        const intentOptions = {
-            includeScore: true,
-            threshold: 0.4,
-            keys: ['keywords']
-        };
-
-        const intentFuse = new Fuse(intents, intentOptions);
-        const intentResult = intentFuse.search(input);
-
-        if (intentResult.length > 0) {
-            const bestMatch = intentResult[0].item.id;
-
-            if (bestMatch === 'greeting') {
-                response = "Hello! I'm here to help you plan your perfect stay at Eraeliya. Ask me about our offers, villas, or dining!";
-            } else if (bestMatch === 'menu') {
-                response = "You can view our full menu here: /menu.pdf";
-            } else if (bestMatch === 'offers') {
-                const offersList = knowledgeBase.offers.map(o => `• ${o.title}: ${o.description}`).join('\n\n');
-                response = "Here are our current offers:\n\n" + offersList;
-            } else if (bestMatch === 'villas') {
-                const villaList = knowledgeBase.villas.map(v => `• ${v.name}`).join('\n');
-                response = "We have the following accommodations. Ask about any of them for more details:\n\n" + villaList;
-            } else if (bestMatch === 'dining') {
-                response = `${knowledgeBase.dining.description}\n\nPhilosophy: ${knowledgeBase.dining.philosophy}\n\nBreakfast: ${knowledgeBase.dining.breakfast}\n\nDon't miss our signature dish: ${knowledgeBase.dining.signatureDish}`;
-            } else if (bestMatch === 'experiences') {
-                response = "You can enjoy:\n" + knowledgeBase.experiences.join('\n');
-            } else if (bestMatch === 'contact') {
-                response = `You can reach us at ${knowledgeBase.contact.phone} or ${knowledgeBase.contact.email}. We are located at ${knowledgeBase.contact.address}.`;
-            }
-        }
-
-        return response;
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!inputValue.trim()) return;
 
         const userMessage = { text: inputValue, sender: 'user' };
         setMessages(prev => [...prev, userMessage]);
+        setInputValue("");
+        setIsTyping(true);
 
-        // Simulate bot thinking delay
-        setTimeout(() => {
-            const botResponseText = processInput(inputValue);
+        try {
+            const botResponseText = await sendMessageToGemini(userMessage.text);
             const botMessage = { text: botResponseText, sender: 'bot' };
             setMessages(prev => [...prev, botMessage]);
-        }, 600);
+        } catch (error) {
+            const errorMessage = { text: "Sorry, something went wrong. Please try again.", sender: 'bot' };
+            setMessages(prev => [...prev, errorMessage]);
+        } finally {
+            setIsTyping(false);
+        }
+    };
 
-        setInputValue("");
+    // Helper function to format markdown-like text (bolding)
+    const formatMessage = (text) => {
+        if (!text) return null;
+        // Split by bold markers (**text**)
+        const parts = text.split(/(\*\*.*?\*\*)/g);
+        return parts.map((part, index) => {
+            if (part.startsWith('**') && part.endsWith('**')) {
+                return <strong key={index}>{part.slice(2, -2)}</strong>;
+            }
+            // Handle newlines
+            return part.split('\n').map((line, i) => (
+                <span key={`${index}-${i}`}>
+                    {line}
+                    {i < part.split('\n').length - 1 && <br />}
+                </span>
+            ));
+        });
     };
 
     return (
-        <div className="chatbot-container">
+        <div className={`chatbot-container ${isOpen ? 'open' : ''}`}>
             {!isOpen && (
                 <button className="chatbot-toggle" onClick={toggleChat}>
-                    Chat
+                    <span role="img" aria-label="chat">💬</span>
                 </button>
             )}
-
             {isOpen && (
                 <div className="chatbot-window">
                     <div className="chatbot-header">
@@ -135,17 +83,26 @@ const Chatbot = () => {
                     <div className="chatbot-messages">
                         {messages.map((msg, index) => (
                             <div key={index} className={`message ${msg.sender}`}>
-                                <div className="message-content" style={{ whiteSpace: 'pre-wrap' }}>{msg.text}</div>
+                                <div className="message-content">
+                                    {formatMessage(msg.text)}
+                                </div>
                             </div>
                         ))}
+                        {isTyping && (
+                            <div className="message bot">
+                                <div className="message-content typing-indicator">
+                                    <span>.</span><span>.</span><span>.</span>
+                                </div>
+                            </div>
+                        )}
                         <div ref={messagesEndRef} />
                     </div>
-                    <form className="chatbot-input-form" onSubmit={handleSubmit}>
+                    <form className="chatbot-input" onSubmit={handleSubmit}>
                         <input
                             type="text"
+                            placeholder="Type your message..."
                             value={inputValue}
                             onChange={handleInputChange}
-                            placeholder="Type your question..."
                         />
                         <button type="submit">Send</button>
                     </form>

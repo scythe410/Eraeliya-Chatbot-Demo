@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { knowledgeBase } from '../data/knowledgeBase';
+import Fuse from 'fuse.js';
 import './Chatbot.css';
 
 const Chatbot = () => {
@@ -30,22 +31,71 @@ const Chatbot = () => {
         const lowerInput = input.toLowerCase();
         let response = knowledgeBase.default;
 
-        if (lowerInput.includes('hi') || lowerInput.includes('hello') || lowerInput.includes('hey') || lowerInput.includes('good morning') || lowerInput.includes('good afternoon') || lowerInput.includes('good evening')) {
-            response = "Hello! I'm here to help you plan your perfect stay at Eraeliya. Ask me about our offers, villas, or dining!";
-        } else if (lowerInput.includes('menu') || lowerInput.includes('food list') || lowerInput.includes('drink list')) {
-            response = "You can view our full menu here: /menu.pdf";
-        } else if (lowerInput.includes('offer') || lowerInput.includes('deal') || lowerInput.includes('discount')) {
-            const offersList = knowledgeBase.offers.map(o => `• ${o.title}: ${o.description}`).join('\n\n');
-            response = "Here are our current offers:\n\n" + offersList;
-        } else if (lowerInput.includes('villa') || lowerInput.includes('room') || lowerInput.includes('stay') || lowerInput.includes('accommodation') || lowerInput.includes('suite')) {
-            const villaList = knowledgeBase.villas.map(v => `• ${v.name}: ${v.description}`).join('\n\n');
-            response = "We have the following accommodations:\n\n" + villaList;
-        } else if (lowerInput.includes('food') || lowerInput.includes('dining') || lowerInput.includes('eat') || lowerInput.includes('restaurant') || lowerInput.includes('breakfast')) {
-            response = `${knowledgeBase.dining.description}\n\nPhilosophy: ${knowledgeBase.dining.philosophy}\n\nBreakfast: ${knowledgeBase.dining.breakfast}\n\nDon't miss our signature dish: ${knowledgeBase.dining.signatureDish}`;
-        } else if (lowerInput.includes('experience') || lowerInput.includes('activity') || lowerInput.includes('do') || lowerInput.includes('yoga') || lowerInput.includes('surf') || lowerInput.includes('spa') || lowerInput.includes('massage') || lowerInput.includes('excursion')) {
-            response = "You can enjoy:\n" + knowledgeBase.experiences.join('\n');
-        } else if (lowerInput.includes('contact') || lowerInput.includes('phone') || lowerInput.includes('email') || lowerInput.includes('address')) {
-            response = `You can reach us at ${knowledgeBase.contact.phone} or ${knowledgeBase.contact.email}. We are located at ${knowledgeBase.contact.address}.`;
+        // 1. Check for specific villa matches first
+        // Clean input to remove common conversational prefixes for better entity matching
+        const cleanInput = lowerInput
+            .replace(/tell me about/g, '')
+            .replace(/what is/g, '')
+            .replace(/show me/g, '')
+            .replace(/details of/g, '')
+            .replace(/info on/g, '')
+            .replace(/can you/g, '')
+            .replace(/i want to know about/g, '')
+            .trim();
+
+        const villaOptions = {
+            includeScore: true,
+            threshold: 0.4, // Slightly relaxed threshold since we cleaned input
+            keys: ['name']
+        };
+        const villaFuse = new Fuse(knowledgeBase.villas, villaOptions);
+        const villaResult = villaFuse.search(cleanInput);
+
+        if (villaResult.length > 0) {
+            const villa = villaResult[0].item;
+            return `**${villa.name}**\n\n${villa.description}`;
+        }
+
+        // 2. General Intent Matching
+        const intents = [
+            { id: 'greeting', keywords: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'] },
+            { id: 'menu', keywords: ['menu', 'food list', 'drink list', 'eat', 'hungry'] },
+            { id: 'offers', keywords: ['offer', 'deal', 'discount', 'promotion', 'price', 'cost'] },
+            { id: 'villas', keywords: ['villa', 'room', 'stay', 'accommodation', 'suite', 'sleep', 'bed'] },
+            { id: 'dining', keywords: ['food', 'dining', 'restaurant', 'breakfast', 'lunch', 'dinner'] },
+            { id: 'experiences', keywords: ['experience', 'activity', 'do', 'yoga', 'surf', 'spa', 'massage', 'excursion', 'tour'] },
+            { id: 'contact', keywords: ['contact', 'phone', 'email', 'address', 'location', 'where'] }
+        ];
+
+        const intentOptions = {
+            includeScore: true,
+            threshold: 0.4,
+            keys: ['keywords']
+        };
+
+        const intentFuse = new Fuse(intents, intentOptions);
+        const intentResult = intentFuse.search(input);
+
+        if (intentResult.length > 0) {
+            const bestMatch = intentResult[0].item.id;
+
+            if (bestMatch === 'greeting') {
+                response = "Hello! I'm here to help you plan your perfect stay at Eraeliya. Ask me about our offers, villas, or dining!";
+            } else if (bestMatch === 'menu') {
+                response = "You can view our full menu here: /menu.pdf";
+            } else if (bestMatch === 'offers') {
+                const offersList = knowledgeBase.offers.map(o => `• ${o.title}: ${o.description}`).join('\n\n');
+                response = "Here are our current offers:\n\n" + offersList;
+            } else if (bestMatch === 'villas') {
+                const villaList = knowledgeBase.villas.map(v => `• ${v.name}`).join('\n');
+                response = "We have the following accommodations. Ask about any of them for more details:\n\n" + villaList;
+            } else if (bestMatch === 'dining') {
+                response = `${knowledgeBase.dining.description}\n\nPhilosophy: ${knowledgeBase.dining.philosophy}\n\nBreakfast: ${knowledgeBase.dining.breakfast}\n\nDon't miss our signature dish: ${knowledgeBase.dining.signatureDish}`;
+            } else if (bestMatch === 'experiences') {
+                response = "You can enjoy:\n" + knowledgeBase.experiences.join('\n');
+            } else if (bestMatch === 'contact') {
+                response = `You can reach us at ${knowledgeBase.contact.phone} or ${knowledgeBase.contact.email}. We are located at ${knowledgeBase.contact.address}.`;
+            }
         }
 
         return response;

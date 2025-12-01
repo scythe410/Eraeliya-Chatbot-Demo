@@ -151,6 +151,66 @@ export const knowledgeBase = {
         price: "40 $ per person (local instructor) | 200 $ per person (soul temple)",
         transport: "Car",
         note: "Special rates giving for group bookings"
+      },
+      {
+        title: "Open Ocean Day: A Private Catamaran Escape Into The Blue",
+        description: "Experience the ultimate maritime adventure aboard a private catamaran, where the serene azure waters await as your exclusive playground. Relax on the spacious deck or take a refreshing dip in the crystal-clear waters. Indulge in delicious treats and refreshing beverages as you drift away, enjoying the perfect blend of relaxation and excitement.",
+        price: "1,485 $ starting price for two",
+        transport: "Tuk tuk"
+      },
+      {
+        title: "Giants of the Deep: A Majestic Whale-Watching Expedition",
+        description: "Board your private catamaran to watch the Giants of the Deep in the blue waters of the Indian ocean. Allow yourself to be educated by the whale watching experts on the boat about the most intimate details of these marine mammals. Paddleboard or Snorkel at wish while enjoying delicious boat meals.",
+        price: "1,975 $ starting price for two",
+        transport: "Tuk tuk"
+      },
+      {
+        title: "Into The Wild : Safari Tales From Yala National Park",
+        description: "Embark on an exciting safari adventure into the untamed wilderness of Yala National Park, led by experienced nature guides. With their expertise, they provide fascinating insights into the park's ecosystem and inhabitants. Yala, is famous for the presence of its diverse wildlife, including elusive leopards, majestic elephants, and vibrant bird species. Get ready for an unforgettable journey into the heart of nature’s beauty.",
+        price: "295 $ per person | 435 $ two adults",
+        transport: "Car"
+      },
+      {
+        title: "Deep Sea Hunting: A Sri Lankan Fishing Adventure On Open Waters",
+        description: "Set about on a thrilling Deep Sea Fishing expedition aboard a traditional Sri Lankan fishing boat. Guided by experienced fishermen, you'll learn the art of angling and casting your line into the open ocean. Experience the adrenaline rush of reeling in your prized catch, whether it's a vibrant gamefish or a prized tuna, adding a pulse of excitement to your journey.",
+        price: "490 $ per person | 580 $ two adults",
+        transport: "Car"
+      },
+      {
+        title: "Udawalawe : The Land Of Sri Lankan Tuskers",
+        description: "Explore the wonders of Udawalawe National Park, renowned for its captivating wildlife, particularly the Sri Lankan elephants and tuskers in their natural habitat. Join us on a safari led by expert naturalists, offering a cruelty-free elephant experience amidst the lush landscapes. Witness majestic elephants, graceful deer, and diverse bird species in this pristine sanctuary. With vast grasslands and shimmering reservoirs, Udawalawe provides a picturesque setting, making it a haven for diverse flora and fauna. Prepare yourself to cherish the intriguing sights of the prideful Tuskers of Sri Lanka.",
+        price: "285 $ per person | 425 $ two adults",
+        transport: "Car"
+      },
+      {
+        title: "Spices and Smiles: An Authentic Sri Lankan Culinary Journey",
+        description: "Embark on a culinary adventure into Sri Lankan cuisine with an authentic cooking experience alongside a local family. Explore vibrant markets to select fresh spices, vegetables, and herbs. In the welcoming kitchen, participate hands-on as you chop, grind, and stir alongside your hosts. Learn the art of balancing flavors and discover the secrets behind the Sri Lankan signature dishes. Last but not least, enjoy the homemade feast together, savoring the mouthwatering results of your cooking session.",
+        price: "109 $ per person | 212 $ two adults",
+        transport: "Tuk tuk"
+      },
+      {
+        title: "Reefs and Wrecks: South Coast Diving & Snorkeling Adventures in Sri Lanka",
+        description: "Explore the underwater wonders of the southern coast of Sri Lanka with South Coast Diving & Snorkeling. With expert guides catering to all levels of expertise, whether you're a snorkeling enthusiast or a seasoned diver, submerge into the crystal-clear depths of the Indian Ocean. Discover vibrant coral reefs teeming with marine life. With quality equipment and a commitment to safety, South Coast Diving & Snorkeling offers an immersive exploration of the underwater world that borders the Pearl of the Indian Ocean.",
+        price: "160 $ per person | 270 $ two adults",
+        transport: "Tuk tuk"
+      },
+      {
+        title: "Rainforest Bathing: Exploring the Biodiversity of Sinharaj Rainforest",
+        description: "A relaxing journey through the lush Sinharaja Rainforest, where each step unveils a sanctuary of biodiversity and natural beauty. The Sinharaja Rainforest, a UNESCO Biosphere Reserve, offers a unique glimpse into the intricate balance of the Sri Lankan ecosystems, with rare plants and endemic species thriving in this emerald oasis. The murmur of pristine streams adds to the enchantment, leading you to hidden waterfalls and tranquil pools. Later in the day, meet the toddy tappers who climb up the palm trees to bring down an elusive elixir; a drink to fix all the tired legs and souls.",
+        price: "335 $ per person | 365 $ two adults",
+        transport: "Car"
+      },
+      {
+        title: "Hands on Earth: A Journey Through Clay Pot Making",
+        description: "Guided by skilled artisans, this immersive experience takes you on a journey back in time as you discover the intricate process of transforming raw clay into functional works of art. You will learn the delicate art of shaping and molding clay into pots of various shapes and sizes. Each pot tells a story, reflecting the unique techniques and regional styles passed down through generations. Every step in the process is a testament to the artisan's skill and creativity as you unleash your own creativity into personalized masterpieces.",
+        price: "85 $ per person | 110 $ two adults",
+        transport: "Tuk tuk"
+      },
+      {
+        title: "Guided Tea Tour: A Journey Into Southern Sri Lanka's Tea Blends",
+        description: "Experience a breathtaking sensory adventure through the rich plantations of tea in Southern Sri Lanka. Begin your day amidst verdant hills, plucking tender tea leaves alongside experienced harvesters who share their generational expertise. The trail then leads to a Sri Lankan tea factory, where you witness the meticulous process of withering, rolling, fermenting, drying, and sorting. Expert artisans guide you through each step, unravelling the alchemy behind the transformation of leaves into the world-renowned Ceylon tea.",
+        price: "100 $ per person | 125 $ two adults",
+        transport: "Tuk tuk"
       }
     ],
     activities: [

@@ -35,8 +35,12 @@ const LandingPage = () => (
           {knowledgeBase.dining.description}
         </p>
         <div style={{ padding: '30px', backgroundColor: 'white', display: 'inline-block', boxShadow: '0 5px 15px rgba(0,0,0,0.05)' }}>
-          <h3 style={{ fontSize: '24px', marginBottom: '10px' }}>Signature Dish</h3>
-          <p style={{ fontStyle: 'italic', color: '#666' }}>{knowledgeBase.dining.signatureDish}</p>
+          <h3 style={{ fontSize: '24px', marginBottom: '10px' }}>Menu Highlights</h3>
+          <ul style={{ listStyle: 'none', padding: 0, color: '#666' }}>
+            {knowledgeBase.dining.menuHighlights.map((item, index) => (
+              <li key={index} style={{ marginBottom: '5px' }}>{item}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
@@ -59,9 +63,23 @@ const LandingPage = () => (
     <section id="experiences" className="section" style={{ backgroundColor: '#1a1a1a', color: 'white' }}>
       <div className="container text-center">
         <h2 className="section-title" style={{ color: 'white' }}>Experiences</h2>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
-          {knowledgeBase.experiences.map((exp, index) => (
+        <p style={{ maxWidth: '700px', margin: '0 auto 40px', color: '#ccc' }}>
+          {knowledgeBase.experiences.description}
+        </p>
+
+        <h3 style={{ color: 'white', marginBottom: '20px' }}>Activities</h3>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', marginBottom: '40px' }}>
+          {knowledgeBase.experiences.activities.map((exp, index) => (
             <span key={index} style={{ padding: '10px 20px', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '30px' }}>
+              {exp}
+            </span>
+          ))}
+        </div>
+
+        <h3 style={{ color: 'white', marginBottom: '20px' }}>Excursions</h3>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
+          {knowledgeBase.experiences.excursions.map((exp, index) => (
+            <span key={index} style={{ padding: '10px 20px', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '30px', backgroundColor: 'rgba(255,255,255,0.05)' }}>
               {exp}
             </span>
           ))}

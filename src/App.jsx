@@ -77,11 +77,17 @@ const LandingPage = () => (
         </div>
 
         <h3 style={{ color: 'white', marginBottom: '20px' }}>Excursions</h3>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
           {knowledgeBase.experiences.excursions.map((exp, index) => (
-            <span key={index} style={{ padding: '10px 20px', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '30px', backgroundColor: 'rgba(255,255,255,0.05)' }}>
-              {exp}
-            </span>
+            <div key={index} style={{ padding: '20px', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '10px', backgroundColor: 'rgba(255,255,255,0.05)', textAlign: 'left' }}>
+              <h4 style={{ color: '#fff', fontSize: '18px', marginBottom: '10px' }}>{exp.title}</h4>
+              <p style={{ color: '#ccc', fontSize: '14px', marginBottom: '15px' }}>{exp.description}</p>
+              <div style={{ fontSize: '13px', color: '#aaa', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '10px' }}>
+                <p><strong>Price:</strong> {exp.price}</p>
+                <p><strong>Transport:</strong> {exp.transport}</p>
+                {exp.note && <p><em>{exp.note}</em></p>}
+              </div>
+            </div>
           ))}
         </div>
       </div>

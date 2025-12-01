@@ -119,13 +119,39 @@ export const knowledgeBase = {
     breakfast: "Complimentary breakfast included. Served on your private terrace or at the main villa, Bawana, from 8 am to 12 pm."
   },
   experiences: {
-    description: "Embark on unforgettable adventures at Eraeliya Villas & Gardens. Explore the vibrant culture, pristine beaches, and exhilarating activities.",
+    description: "Greetings from an oasis where nature dances in harmony and tranquility meets adventure - welcome to Eraeliya Villas & Gardens - Sri Lanka in its essence is an experience for spirited travelers. Immerse yourselves in our experiential excursions and be one with the local culture during your stay at Eraeliya.",
     excursions: [
-      "Udawalawe National Park (Elephant spotting)",
-      "Yala National Park (Leopard spotting)",
-      "Koggala Lake Safari",
-      "Buddhist Temples exploration",
-      "Galle Fort tours (UNESCO World Heritage site)"
+      {
+        title: "Guided Galle Fort Walk: Life in a Living Heritage",
+        description: "Explore the Galle Fort with a local guide to uncover its rich history. Wander through its streets echoing the influences of the Dutch, the Portuguese and the British. Admire the vibrant street art and discover local craftsmanship, from silversmiths to culinary experts. It's a journey not to be missed.",
+        price: "240 $ per person | 295 $ two adults",
+        transport: "Car"
+      },
+      {
+        title: "Galle by Tuk Tuk: A Trip to Remember",
+        description: "Embark on a Sri Lankan Tuk Tuk adventure through the historical wonders of Galle. Feel the city's vibrant energy as you navigate the bustling markets and quiet courtyards. Explore its diverse architecture and soak in the charms of Galle. Experience the city from a unique perspective on this lively journey through time.",
+        price: "80 $ per person | 90 $ two adults",
+        transport: "Tuk tuk"
+      },
+      {
+        title: "A Lake Safari: Mud Crabs with a Twist of Cinnamon",
+        description: "Voyage through the serene Koggala lake by boat with the ultimate goal of reaching the “Cinnamon Island”; a family owned organic cinnamon plantation. Meet the merry local cinnamon craftsman who would take you through the strenuous journey of bringing cinnamon to the table. Enjoy a cup of freshly prepared cinnamon tea. On the way home, meet the legendary crab fishermen of Koggala.",
+        price: "140 $ per person | 170 $ two adults",
+        transport: "Car"
+      },
+      {
+        title: "Of Rock Temples and Fishermen: The Lankan Paradox",
+        description: "Immerse yourself in the Buddhist worshipping practices at the Yatagala Rock Temple. Carved into the ancient rock, the temple unfolds a tapestry of Buddhist cave paintings. On the way home, meet the world renowned stilt fishermen who balance on sticks for a living.",
+        price: "115 $ per person | 140 $ two adults",
+        transport: "Car"
+      },
+      {
+        title: "Way of the Waves: Surfing at Weligama Surf School",
+        description: "Experience the thrill of surfing at Weligama Surf School “Soul Temple”. With experienced instructors, both beginners and seasoned surfers can learn and polish their skills. It's not just about surfing; it's about connecting with the ocean.",
+        price: "40 $ per person (local instructor) | 200 $ per person (soul temple)",
+        transport: "Car",
+        note: "Special rates giving for group bookings"
+      }
     ],
     activities: [
       "Yoga & Meditation (Private terrace, lush garden, or oceanfront)",

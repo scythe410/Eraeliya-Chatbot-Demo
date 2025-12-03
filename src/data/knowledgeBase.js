@@ -285,6 +285,147 @@ export const knowledgeBase = {
       "No driver accommodation provided."
     ]
   },
+  termsAndConditions: {
+    entireProperty: [
+      {
+        title: "1. BOOKING",
+        content: [
+          "A. A deposit of 50% of the total value of your booking is required to reserve your booking.",
+          "B. The balance payment must be received 30 days (60 days if peak period) before the date of arrival.",
+          "C. Your booking is not considered confirmed until we receive a deposit from you.",
+          "D. We will not accept a booking where the number in your party exceeds the number that the property accommodates.",
+          "E. A security deposit equal to one day's rent will be payable on your arrival by way of cash.",
+          "F. You agree not to make any change to the property, use it only as a private holiday residence, behave appropriately, pay for damages, allow entry for repairs, not sublet, and not ask staff to leave."
+        ]
+      },
+      {
+        title: "2. PAYMENT",
+        content: [
+          "Prices are in US dollars.",
+          "Bank to bank transfer payments available on request.",
+          "Discretionary discounts do not affect guests who have paid full price."
+        ]
+      },
+      {
+        title: "3. ARRIVAL / DEPARTURE TIMES",
+        content: ["Arrival time is not before 2.30pm, departure time is no later than 11am."]
+      },
+      {
+        title: "4. YOUR TRAVEL ARRANGEMENTS",
+        content: ["All travel arrangements are your responsibility and at your own cost."]
+      },
+      {
+        title: "5. INSURANCE & HEALTH",
+        content: [
+          "YOU MUST HAVE FULL TRAVEL INSURANCE TO COVER THE ACTIVITY OF THIS HOLIDAY.",
+          "Consult a doctor to check fitness for activities.",
+          "Advise us of any health conditions.",
+          "We are not responsible for injuries caused by uneven terrain."
+        ]
+      },
+      {
+        title: "6. CANCELLATION AND AMENDMENTS BY YOU",
+        content: [
+          "More than 60 days before arrival: 20% charge.",
+          "30-60 days before arrival: 50% charge.",
+          "1-29 days before arrival and no-shows: No refund.",
+          "Peak periods: Add 30 days to all cancellation periods."
+        ]
+      },
+      {
+        title: "7. AMENDMENTS BY INTEGRA (PVT) LTD",
+        content: ["We reserve the right to make minor changes. Significant changes will be notified as soon as possible."]
+      },
+      {
+        title: "8. CANCELLATION BY INTEGRA (PVT) LTD",
+        content: ["We reserve the right to cancel the booking, offering a full refund."]
+      },
+      {
+        title: "9. OUR LIABILITY TO YOU",
+        content: [
+          "We ensure the property is supplied as described.",
+          "We do not accept liability for force majeure events.",
+          "We are not liable for injuries or loss of personal property.",
+          "Valuables should be kept in the safe box.",
+          "Management is not responsible for unattended personal belongings."
+        ]
+      },
+      {
+        title: "10. SMOKING POLICY",
+        content: ["Smoking in rooms is strictly prohibited. Deep cleaning fee is 100 USD per each day of stay."]
+      },
+      {
+        title: "11. GROUP BOOKINGS",
+        content: ["The person signing has authorization from all individuals. A deposit from every group member is required."]
+      },
+      {
+        title: "12. ADDITIONAL CONDITIONS FOR ALL RETREATS",
+        content: ["Health questionnaire may be required. Chronic illness requires consultation."]
+      },
+      {
+        title: "13. LEGAL DISCLAIMER",
+        content: ["Information is for general guidance. Integra (PVT) Ltd is not responsible for errors or omissions."]
+      },
+      {
+        title: "14. WEBSITE & SOCIAL MEDIA PRIVACY POLICY",
+        content: ["Personal information is used only for the requested service. We will not use images without permission."]
+      },
+      {
+        title: "15. GOVERNING LAW",
+        content: ["Terms and conditions are governed by Sri Lankan law."]
+      },
+      {
+        title: "16. ARBITRATION & LEGAL FEES",
+        content: ["Disputes subject to arbitration in Sri Lanka."]
+      },
+      {
+        title: "17. CHILD POLICY",
+        content: ["We do not accommodate children under 12 years of age. Additional charge of US$ 70 per night for guests over 12."]
+      }
+    ],
+    regularBookings: [
+      {
+        title: "1. PAYMENT",
+        content: ["50% non-refundable deposit to guarantee, balance 30 days prior to arrival (60 days for Peak Season)."]
+      },
+      {
+        title: "2. CANCELLATION POLICY",
+        content: [
+          "More than 30 days before arrival: 50% charge.",
+          "1-29 days before arrival and no-shows: No refund.",
+          "Peak/High Seasons: Add 30 days to cancellation periods."
+        ]
+      },
+      {
+        title: "3. CHECK-IN / OUT TIMES",
+        content: ["Check-in: 14:00 / Check-out: 12 Noon."]
+      },
+      {
+        title: "4. CHILD POLICY",
+        content: ["No children under 12. Additional charge of US$ 70 per night for guests over 12."]
+      },
+      {
+        title: "5. EXTRA BED",
+        content: ["One extra adult supplement charge is US$ 70 per night. Subject to availability."]
+      },
+      {
+        title: "6. SMOKING POLICY",
+        content: ["Strictly prohibited in rooms. Deep cleaning fee is 100$ per day."]
+      },
+      {
+        title: "7. NUMBER OF GUESTS",
+        content: ["We reserve the right to refuse entry if the number of guests exceeds the booking."]
+      },
+      {
+        title: "8. DISCLAIMER",
+        content: ["Not liable for loss of property or injuries. Activities undertaken at own risk."]
+      },
+      {
+        title: "9. DISPUTE RESOLUTION",
+        content: ["Laws of Sri Lanka shall apply. Arbitration under Arbitration Act No: 11 of 1995."]
+      }
+    ]
+  },
   contact: {
     phone: "+94 76 275 0841",
     email: "info@eraeliya.com",

@@ -50,23 +50,63 @@ const Chatbot = () => {
         }
     };
 
-    // Helper function to format markdown-like text (bolding)
+    // Helper function to format markdown-like text (bolding and bullet points)
     const formatMessage = (text) => {
         if (!text) return null;
-        // Split by bold markers (**text**)
-        const parts = text.split(/(\*\*.*?\*\*)/g);
-        return parts.map((part, index) => {
-            if (part.startsWith('**') && part.endsWith('**')) {
-                return <strong key={index}>{part.slice(2, -2)}</strong>;
+
+        const lines = text.split('\n');
+        const formattedElements = [];
+        let currentList = [];
+
+        const processInlineFormatting = (line) => {
+            const parts = line.split(/(\*\*.*?\*\*)/g);
+            return parts.map((part, index) => {
+                if (part.startsWith('**') && part.endsWith('**')) {
+                    return <strong key={index}>{part.slice(2, -2)}</strong>;
+                }
+                return part;
+            });
+        };
+
+        lines.forEach((line, index) => {
+            const trimmedLine = line.trim();
+            if (trimmedLine.startsWith('* ') || trimmedLine.startsWith('- ')) {
+                currentList.push(
+                    <li key={`li-${index}`}>
+                        {processInlineFormatting(trimmedLine.substring(2))}
+                    </li>
+                );
+            } else {
+                if (currentList.length > 0) {
+                    formattedElements.push(
+                        <ul key={`ul-${index}`} className="message-list">
+                            {currentList}
+                        </ul>
+                    );
+                    currentList = [];
+                }
+                if (trimmedLine) {
+                    formattedElements.push(
+                        <div key={`p-${index}`} className="message-paragraph">
+                            {processInlineFormatting(line)}
+                        </div>
+                    );
+                } else {
+                    // Preserve empty lines for spacing if needed, or ignore
+                    formattedElements.push(<br key={`br-${index}`} />);
+                }
             }
-            // Handle newlines
-            return part.split('\n').map((line, i) => (
-                <span key={`${index}-${i}`}>
-                    {line}
-                    {i < part.split('\n').length - 1 && <br />}
-                </span>
-            ));
         });
+
+        if (currentList.length > 0) {
+            formattedElements.push(
+                <ul key={`ul-end`} className="message-list">
+                    {currentList}
+                </ul>
+            );
+        }
+
+        return formattedElements;
     };
 
     return (

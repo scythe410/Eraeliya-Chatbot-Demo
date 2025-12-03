@@ -181,3 +181,22 @@
   transform: translateY(0);
   box-shadow: none;
 }
+
+.message-list {
+  margin: 8px 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.message-list li {
+  margin-bottom: 4px;
+}
+
+.message-paragraph {
+  margin-bottom: 8px;
+  min-height: 1.2em; /* Ensure empty lines take up space */
+}
+
+.message-paragraph:last-child {
+  margin-bottom: 0;
+}

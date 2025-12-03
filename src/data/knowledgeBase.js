@@ -223,15 +223,54 @@ export const knowledgeBase = {
     ]
   },
   spa: {
-    name: "Aroma Spa",
-    description: "Indulge in relaxation at our exquisite boutique-style Spa Pavilion nestled within our garden oasis. Our aromatic treatments are meticulously crafted to alleviate stress, pain, and muscle tension.",
-    treatments: [
-      "Tranquility Aroma Massage (Headaches and muscle pain)",
-      "Revitalizing Body Scrub (Radiant complexion)",
-      "Anti-cellulite massage",
-      "Lymphatic drainage"
+    name: "Aroma Spa (Balinese Ayu Spas)",
+    description: "Indulge in relaxation at our exquisite boutique-style Spa Pavilion nestled within our garden oasis. Our aromatic treatments are meticulously crafted to alleviate stress, pain, and muscle tension, harnessing the exceptional health benefits of premium coconut oil. Experience the bliss of our “Tranquility Aroma Massage” to alleviate headaches and muscle pain, or rejuvenate your skin with our enchanting “Revitalizing Body Scrub” for a radiant, flawless complexion.",
+    kidsPackages: [
+      { name: "Super Spa Star", duration: "60 min", price: "USD 35", description: "Happy essential mini massage and fruit mini facial." },
+      { name: "Princess Treat", duration: "60 min", price: "USD 35", description: "A jolly time for kids, smell and play with fruits scrubs choices of yogurt cucumber and coconut, for a sweet and hydrating caress." },
+      { name: "Fruit mini Facial", duration: "60 min", price: "USD 35", description: "Let them play and learn how to take care of their skin, with a gentle coconut scrub and chocolate body mask and cucumbers in her eyes." }
     ],
-    ingredients: "Premium coconut oil"
+    bodyTreatments: [
+      { name: "Refresher Facial", duration: "30 min", price: "USD 30", description: "Pure honey mask and cucumber, leaving your skin feeling smooth and radiant." },
+      { name: "Natural Asian Facial", duration: "60 min", price: "USD 45", description: "Using only Bio natural products, cleansed and gently exfoliated. Purifying gel mask, hand and feet massage." },
+      { name: "Spa Manicure", duration: "30 min", price: "USD 20", description: "Nail cut, file, cuticle repair, exfoliation, nourishing cream massage." },
+      { name: "Spa Pedicure", duration: "30 min", price: "USD 20", description: "Nail cut, file, cuticle repair, soothing foot soak, peppermint scrub, foot massage." },
+      { name: "Sun Lovers", duration: "60 min", price: "USD 50", description: "Calm, soothe and re-hydrate your skin after sun exposure. Cucumber and honey body conditioner." },
+      { name: "Natural Coconut Body Scrub", duration: "60 min", price: "USD 75", description: "Gentle skin exfoliation using home-made natural coconut scrub." },
+      { name: "Green Tea Body Treat", duration: "60 min", price: "USD 75", description: "Gentle skin exfoliation using green tea body scrub followed by a papaya body wrap." },
+      { name: "Himalayan Body Scrub", duration: "120 min", price: "USD 90", description: "Relaxing body scrub with Himalayan salt crystal. Jasmine and sandalwood essential oils." },
+      { name: "Chocolate Body Scrub", duration: "120 min", price: "USD 90", description: "Cocoa removes dead skin cells and exposes a young, natural glow." }
+    ],
+    packages: [
+      { name: "Relaxation Package", duration: "1h 20m", price: "USD 65", description: "Balinese Massage 50mn + Foot massages 30mn" },
+      { name: "Pampered Package", duration: "2h 20m", price: "USD 110", description: "The Signature Spa + Natural Asian Facial" },
+      { name: "Harmony Package", duration: "1h 40m", price: "USD 135", description: "Four Hands Massage + Natural Asian Facial & Foot Massage" },
+      { name: "Romantic Couple Indulgence", duration: "90 min", price: "USD 120", description: "Restoring & calming Balinese Massage, followed steam or sauna experience." },
+      { name: "Romantic Honeymoon Treat", duration: "120 min", price: "USD 150", description: "Himalayan salt body scrub, Full body massage, Glowing radiance Mini Facial." }
+    ],
+    massages: [
+      { name: "Signature Massage", duration: "90 min", price: "USD 75", description: "Combination of 4 massages: deep skin massage, shiatsu, warm stone, and reflexology." },
+      { name: "Warm Stones Heaven Massage", duration: "90 min", price: "USD 75", description: "Traditional massage and lomi-lomi followed by warm stones." },
+      { name: "Balinese Massage", duration: "60/90 min", price: "USD 50/70", description: "Asian Traditional massage using palm pressure and long gentle strokes with essential oils." },
+      { name: "Swedish Massage", duration: "60 min", price: "USD 50", description: "Soft and long strokes using warm oil to harmonize corporal functions." },
+      { name: "Shiatsu Massage", duration: "50 min", price: "USD 50", description: "Pressure, rubbing, stroking to stimulate muscles and circulatory system." },
+      { name: "Warm Oil Massage", duration: "60 min", price: "USD 50", description: "Uses various herbal oils for a deeply relaxing experience." },
+      { name: "Four Hands Massage", duration: "60 min", price: "USD 75", description: "Two therapists working in harmony. Combination of shiatsu, traditional, and lomi-lomi." },
+      { name: "Sense of Touch Massage", duration: "60 min", price: "USD 75", description: "Inspired by Balinese and Lomi-Lomi techniques using aroma therapy oil." },
+      { name: "Sri Lankan Healing", duration: "120 min", price: "USD 90", description: "Freshly Scraped Coconut, Indian head massage, Tropical full body massage with virgin coconut oil." },
+      { name: "Head Massage", duration: "30 min", price: "USD 30", description: "Stimulates blood circulation to scalp, relieves headaches." },
+      { name: "Back Massage", duration: "30 min", price: "USD 30", description: "Relieves tension in shoulders, neck, and lower back." },
+      { name: "Back and Stone Massage", duration: "60 min", price: "USD 50", description: "Shiatsu and traditional massage followed by warm stones on back." },
+      { name: "Feet Reflexology", duration: "30/60 min", price: "USD 30/50", description: "Foot massage on reflex points to restore energy flow." },
+      { name: "Hands Reflexology", duration: "30 min", price: "USD 30", description: "Removes energy blockages, increases circulation, reduces tensions." }
+    ],
+    etiquette: {
+      arrival: "Please arrive at least 10 minutes ahead of your scheduled treatment time.",
+      cancellation: "Please cancel at least 4 hours before. Less than 4 hours incurs 50% charge. No-shows incur full cost.",
+      attire: "Disposable underwear is available if desired.",
+      valuables: "Please keep valuables in the room safe.",
+      ambience: "Please switch off mobile phones or place in silent mode."
+    }
   },
   founders: {
     names: "Carl & Nyuri",
